@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'utils/themeNotifier.dart';
 import 'utils/theme.dart';
 import 'utils/string.dart';
-import 'Screens/homePage.dart';
+import 'Screens/loginInPage.dart';
 
 void main() {
   runApp(ChangeNotifierProvider<ThemeNotifier>(
@@ -19,9 +19,10 @@ class MyApp extends StatelessWidget {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appName,
       theme: themeNotifier.getTheme(),
-      home: MyHomePage(title: appName),
+      home: LoginPage(title: appName),
     );
   }
 }

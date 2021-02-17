@@ -1,47 +1,34 @@
-import 'package:flutter/material.dart';
-import 'login.dart';
-import 'settings.dart';
+import "package:flutter/material.dart";
 import 'package:laundry/utils/fontSize.dart';
 import 'package:laundry/utils/colors.dart';
+import 'package:laundry/utils/string.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+import 'bottomNavigation.dart';
+import 'dashBoardPage.dart';
 
-  final String title;
-
+class SignUpPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text(appName),
           backgroundColor: Theme.of(context).primaryColor,
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         body: SingleChildScrollView(
           child: Container(
             child: Column(
               children: <Widget>[
-                /*back icon*/
-                SafeArea(
-                  child: Container(
-                    padding: EdgeInsets.only(left: 8),
-                    alignment: Alignment.centerLeft,
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ),
-                ),
                 /*heading*/
                 Padding(
                   padding: const EdgeInsets.only(left: 25, right: 25, top: 14),
@@ -106,16 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 padding: EdgeInsets.all(15),
                                 child: Text("Create Account")),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LoginPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavigation()));
                             }),
                       ),
                       SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        //crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text("Already a Member ?"),
                           Container(
@@ -124,17 +107,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           new GestureDetector(
                             onTap: () {
-                              setState(() {
-                         
-                              });
+                              setState(() {});
                             },
                             child: Padding(
                                 padding: EdgeInsets.all(25),
                                 child: Text(
                                   "Login in",
                                   style: TextStyle(
-                                      color: Colors.blue[900],
-                                      ),
+                                    color: Colors.blue[900],
+                                  ),
                                 )),
                           ),
                         ],
